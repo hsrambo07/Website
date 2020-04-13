@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+
+
+
 
 def signup(request):
     if request.method=='POST':
@@ -15,17 +18,26 @@ def signup(request):
                 return redirect('home')
     
         else:
-            #The user wants to enter info
             return render(request,'signup.html',{'error':'Password dosent match'})
     else:
         return render(request,'signup.html')
 
-
-
 def login(request):
-    return render(request,'login.html')
+    if request.method=='POST':
+        user=auth.authenticate(username=request.POST['username'],password=request.POST['password'])
+        if user is not None:
+            auth.login(request,user)
+            return redirect('home')
+        else:
+            return render(request,'login.html',{'error':'username or password is inccorrect'})
+    else:
+        return render(request,'login.html')
 
 
 def logout(request):
-    # need to route to homepage
+    
+    if request.method=='POST':
+        auth.logout(request)
+        return redirect('logout')
+        
     return render(request,'logout.html')
