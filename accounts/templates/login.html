@@ -1,20 +1,18 @@
-<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<br>
+
 {% extends 'home.html' %}
 {% block content %}
-<h1>LOGIN!!!</h1>
+
 
 {% if error %}
 {{error}}
-<br>
-<br>
+
 {% endif %}
 
 
 
-<br>
+
 <form class="form-signin" method="POST" action="{% url 'login' %}">
-  <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <img class="mb-4" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="" style="text-align: center; left: 100px;" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Welcome Back user</h1>
   {% csrf_token %}
   <label class="sr-only">Username</label>

@@ -2,7 +2,7 @@
 {% extends 'home.html' %}
 {% block content %}
 
-<h1>Signup!!!</h1>
+
 
 {% if error %}
 {{error}}
@@ -13,7 +13,7 @@
 
 
 <form class="form-signin" method="POST" action="{% url 'signup' %}">
-    <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <img class="mb-4" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="" style="text-align: center; left: 100px;" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     {% csrf_token %}
     <label class="sr-only">Username</label>
