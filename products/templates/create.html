@@ -2,30 +2,30 @@
 {% extends 'home.html' %}
 {% block content %}
 
-{% if error %}
-{{error}}
-<br>
-<br>
-{% endif %}
+
 
 
 
 
 <form class="form-signin" method="POST" action="{% url 'create' %}"  enctype="multipart/form-data">
   <img class="mb-4" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="" style="text-align: center; left: 100px;" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Welcome Back user</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Enter Details of your product</h1>
+  {% if error %}
+<h4  style="color: red; text-align: center;" >{{error}}</h4>
+<br>
+{% endif %}
   {% csrf_token %}
   <label class="sr-only">Title</label>
   <input type="text" class="form-control" name="title" placeholder="Title" required autofocus>
         <br>
   <label  class="sr-only">Body</label>
-  <input type="textbox" name="body" class="form-control" placeholder="Body" required>
+  <input type="textbox" name="body" class="form-control" placeholder="Details of your product" required>
 <br>
 
 
 
   <label  class="sr-only">URL</label>
-  <input type="text" name="url" class="form-control" placeholder="URL" required>
+  <input type="text" name="url" class="form-control" placeholder="URL" notrequired>
 <br>
 
 

@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block content %}
+<main style="align-items: center; text-align: center;">
+<img src="{{product.image.url}}" height="400px" width="400px">
+<br>
+<br>
+<br>
+<img src="{{product.icon.url}}" height="100px" width="100px">
+<br>
+<br>
+{{product.title}}
+<br>
+{{product.body}}
+<br>
+{{product.pub_date}}
+<br>
+{{product.url}}
+<br> 
+<a href=""><button class="btn btn-primary btn-large btn-block">Upvotes{{product.votes_total}}</button></a>
+</main>
+
+{% endblock %}
