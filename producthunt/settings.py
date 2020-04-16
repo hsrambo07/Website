@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -87,6 +89,11 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -128,10 +135,12 @@ STATIC_URL = '/static/'
 
 
 
-STATICFILES_DIR=[os.path.join(BASE_DIR,'portfolio/static/')]
+STATICFILES_DIR=[os.path.join(BASE_DIR,'static')]
 
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+
+
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'

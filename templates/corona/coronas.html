@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   
+    <link rel='stylesheet' href="{% static 'css/admin/covid.css' %}">
+    <link rel='stylesheet' href="{% static 'css/admin/bookmark.css' %}">
+    <link rel='stylesheet' href="{% static 'css/navbar.css' %}">
+
+
+
+
+  <title>Covid</title>
+  <script src="covid.js"></script>
+</head>
+<body style="align-items: center;">
+  <div class="content">
+  <script src="{% static 'css/popup.js' %}"></script>
+
+  <div class="tempbox">
+      <img class="template" src="back1.png">
+<div class="navbox">
+      <div class="navbar"></div>
+  <h2 class="button1">Home</h2>
+  <p class="button2 hover-3">Graph</p>
+  <p class="button3">History</p>
+  <p class="button4">FAQ</p>
+  <p class="logo">Covid<span class="meter">Meter</span></p>
+  <img class="mark" src="png.png" >
+  <p class="bookmark">Bookmark</p>  
+</div>
+
+  <div class="first"></div>
+  <div class="second"></div>
+  <div class="third"></div>
+  <div class="fourth"></div>
+  <div class="fifth"></div>
+  <div class="sixth"></div>
+
+
+  <div id="root"></div>
+ 
+
+
+
+   
+    <p class="input">Enter Country Name</p>
+    <img class="search">
+    <p class="worldwide">Total Worldwide Cases</p>
+    <p class="worldrecovery">Total Recoveries Worldwide</p>
+  <p class="worlddeaths">Total Deaths Worldwide</p>
+    <div class="recoverybox1">
+    </div>
+    
+    <p class="recovery">18,232</p>
+        
+        <p class="recoveryup">4.33%</p>
+        <p class="recoverydown">56.34%</p>
+        <img class="uparrow" src="arrow.png" style="width:30px;height:50px;">
+
+  <div class="deathbox"></div>
+  <p class="deathcount">18,234</p>
+  <p class="deathup">3.44%</p>
+  <p class="deathdown">23.34%</p>
+  <img class="downarrow" src="arrow.png" style="width:30px;height:50px;">
+
+  
+  <div class="row">
+      <div class="china"></div>
+      <div class="india"></div>
+      <div class="usa"></div>
+      <div class="australia"></div>
+      <div class="italy"></div>
+  </div>
+  <img class="add1"  src="add.png">
+  <img class="add2"  src="add.png">
+  <img class="add3"  src="add.png">
+  <img class="add4"  src="add.png">
+</div>
+<input class="search" type="text" value="i.e. Italy,India">
+<img class="search1" src="FAVPNG_search-box-button-clip-art_xt5YDBpx.png" href="www.google.com">
+</div>
+
+</body>
+</html>
