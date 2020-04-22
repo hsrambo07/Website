@@ -1,12 +1,11 @@
 {% extends 'home.html' %}
 
 {% block content %}
-  <h2>GitHub API</h2>
-  <form method="get">
-    <input type="text" name="username">
-    <button type="submit" class="btn blue">search on github</button>
-  </form>
- 
-    <h1><strong>{{ user.total_cases}}</strong> total <strong>cases</strong> public repositories.</h1>
-
+<div style="align-items: center;">
+<h1>STATE:{{empty.response.name}}</h1>
+<h2>Confirmed cases:{{empty.response.confirmed}}</h2>
+ <h3>Total recovered cases: {{empty.response.recovered}}</h3> 
+<h3>Total Deaths:{{empty.response.deaths}}</h3>
+</div>
+{{country}}
 {% endblock %}

@@ -1,16 +1,19 @@
 
 {% extends 'home.html' %}
 {% block content %}
-<img class="mb-4" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="" style="text-align: center; left: 100px;" width="72" height="72">
-
-<br>
 <br>
 
-<h1 style="text-align: center;">you have successfully logged out</h1>
+<h2 style="text-align: center; font-family: Helvetica, sans-serif;">Thank you for using our site.</h2>
+<br>
+<p style="text-align:center; font-family:Helvetica, sans-serif; font-size: medium; color: royalblue;" >You will be redirected to homepage in a few seconds...</p>
 
-<a style="text-align: center;" href="{% url 'home' %}">Home</a>
-
-
+<script>
+    //Using setTimeout to execute a function after 5 seconds.
+    setTimeout(function () {
+       //Redirect with JavaScript
+       window.location.href= '{% url 'home' %}';
+    }, 5000);
+    </script>
 
 {% endblock %}
 

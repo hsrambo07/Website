@@ -25,7 +25,8 @@ SECRET_KEY = '*g!de%mzfo9*pwwi%gah4y5154!oykb1i^l!z9q&f!(v3&@1t3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["98386497.ngrok.io","localhost","127.0.0.1"
+]
 
 
 
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+
+    
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'producthunt.urls'
@@ -92,7 +96,13 @@ DATABASES = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication'
-    ]
+    ],
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
 }
 
 # Password validation
@@ -131,13 +141,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
+
+
+
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static'),]
 STATIC_URL = '/static/'
 
-
-
-STATICFILES_DIR=[os.path.join(BASE_DIR,'static')]
-
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
 STATIC_ROOT = '/static/'
 
 

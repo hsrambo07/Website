@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% for i in country %}
+   <h1 style="font-family: Helvetica, sans-serif; display: inline-block;">State:</h1><h2 style="font-family:Helvetica, sans-serif; display: inline;">{{i.state}}</h2> 
+   <br>
+     {% for j in i.districtData %}
+     <h3 style="font-family: helvetica; display: inline-block;"> {{j.district}} :</h3> <p>Confirmed Cases: {{j.confirmed}}</p>
+      <p>Recovered:{{j.recovered}}</p>
+      
+{% endfor %}
+<br>
+{% endfor %}
+
+
+{% endblock %}

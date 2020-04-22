@@ -1,0 +1,51 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<br>
+<br>
+<br>
+
+    
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+  var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://ip-api.com/json', true);
+xhr.onreadystatechange = function() {
+  if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+
+    // Parse JSON response
+    var data = JSON.parse(xhr.responseText);
+
+    // Use the object however you wish
+    console.log(data);
+    var z= document.getElementById("demo").innerHTML = data.city;
+    document.getElementById("demo1").innerHTML = data.zip;
+    document.getElementById("demo2").innerHTML = data.regionName;
+   document.getElementById("demo2").innerHTML = data.regionName;
+
+
+    
+    
+    
+    data_django= {{jsons|safe}};
+    if (data_django.includes(z)){
+    document.getElementById("result").innerHTML="Please Stay Home"; 
+    document.getElementById("result").style.color = "red";
+
+     
+}    }
+ 
+};
+   
+xhr.send();
+
+    </script>
+    <p id="result" style="text-align: center;font-size: xx-large;">Getting the Result.......</p>
+
+    <p style="font-family: Helvetica, sans-serif;text-align: center; padding-bottom: 0%;">Your Location:</p> <p id="demo" style="color: slateblue;text-align: center;">Loading......</p>
+    
+    <p id="demo1" style="color: slateblue;text-align: center;">Loading......</p>
+    
+    <p id="demo2" style="color: slateblue;text-align: center;">Loading......</p>
+
+        {% endblock %}
