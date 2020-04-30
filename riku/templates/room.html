@@ -3,22 +3,33 @@
 {% block content %}
 {% load static %}
 
-
+<style>
+    blink marquee {
+       color: expression("rgb(" + Math.floor(Math.random() * 255)
+          + "," + Math.floor(Math.random() * 255) + ","
+          + Math.floor(Math.random() * 255) + ")");
+    }
+    </style>
 
 <br>
 <br>
 
-<p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Your lobby name:</p>
-<p style="text-align: center;font-family: Arial, Helvetica, sans-serif; color: slateblue; font-size: 30px;">{{ room_name}}</p>
-    <textarea style="padding-left: 20px;border: solid teal 3px; border-radius: 30px;background-color: snow; box-shadow:black 10px;  height: 300px; align-items: center; font-family:  Helvetica, sans-serif; "
-     id="chat-log" cols="100" rows="20" readonly></textarea>
+<p style="text-align: center; align-self: auto;color: aliceblue; font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Your lobby name:</p>
+<p style="text-align: center;font-family: Helvetica, sans-serif; color: yellow;font-weight: bold; font-size: 40px;">{{ room_name}}</p>
+<textarea  style="color: whitesmoke; resize: none;overflow: auto; width: 700px; font-size: 25px; padding-left: 20px;padding-top: 5px; border: solid yellow 7px; border-radius: 30px;background-color: snow; box-shadow:black 10px;  height: 300px; align-items: center; font-family:  Helvetica, sans-serif; "
+     id="chat-log" id="chat-log1" cols="100" rows="20" readonly></textarea> 
+
+
+
+
      <br><br>
     <input id="chat-message-input" style="padding-left: 9px; color: crimson; font-family:Helvetica, sans-serif; font-size: 10px; color: orchid; background-color: whitesmoke; border-radius: 10px; height: 50px; width:300px; opacity: 20%; font-size: 30px; margin-bottom: 10px;"
      placeholder="type in message" type="text" size="10" data-emojiable="true"><br>
     <input id="chat-message-submit" class="btn" style="box-shadow: seashell 4px; background-color: yellowgreen; color: oldlace;" type="button" value="Send" >
   
-  
+
     
+
 
 
     
@@ -36,8 +47,14 @@
         
                 chatSocket.onmessage = function(e) {
                     const data = JSON.parse(e.data);
-                    document.querySelector('#chat-log').value += (data.message + '\n');
-                    document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight 
+
+                    var time = new Date();
+                    document.querySelector('#chat-log').value += ((data.message) + " ");
+                    document.querySelector('#chat-log').value += ((time.getHours())+":"+(time.getMinutes())+":"+(time.getSeconds()) + '\n');
+                    document.querySelector('#chat-log').style.color ='yellow' ;
+
+                    document.querySelector('#chat-log').style.color ='white' ;
+                    document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight ;               
                 };
         
                 chatSocket.onclose = function(e) {
@@ -45,6 +62,8 @@
                 };
         
                 document.querySelector('#chat-message-input').focus();
+                document.querySelector('#chat-message-input').color="yellow";
+
                 document.querySelector('#chat-message-input').onkeyup = function(e) {
                     if (e.keyCode === 13) {  // enter, return
                         document.querySelector('#chat-message-submit').click();
@@ -53,6 +72,8 @@
         
                 document.querySelector('#chat-message-submit').onclick = function(e) {
                     const messageInputDom = document.querySelector('#chat-message-input');
+
+                    
                     const message = messageInputDom.value;
                     chatSocket.send(JSON.stringify({
                         'message': message
@@ -60,10 +81,62 @@
                     messageInputDom.value = '';
                 };
             </script>
+
+
+
+
+
+
+
+
+
+
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script>
+  changeContrast();
+    function changeContrast() {
+      
+        var R, G, B, C, L;
         
+        $( "#chat-log" ).each(function() {
+     
+            R = (Math.floor(Math.random() * 256));
+            G = (Math.floor(Math.random() * 256));
+            B = (Math.floor(Math.random() * 256));
+     
+            $( this ).css( 'background-color', 'rgb(' + R + ',' + G + ',' + B + ')' );
+     
+            C = [ R/255, G/255, B/255 ];
+     
+            for ( var i = 0; i < C.length; ++i ) {
+     
+            if ( C[i] <= 0.03928 ) {
+     
+            C[i] = C[i] / 12.92
+     
+            } else {
+     
+            C[i] = Math.pow( ( C[i] + 0.055 ) / 1.055, 2.4);
+     
+            }
+     
+            }
+     
+            L = 0.2126 * C[0] + 0.7152 * C[1] + 0.0722 * C[2];
+     
+            if ( L > 0.179 ) {
+     
+            $( this ).css( 'color', 'black' );
+     
+            } else {
+     
+            $( this ).css( 'color', 'white' );
+     
+            }
+     
+        });
+     
+    }</script>      
    
-
-
-
-
+    
 {% endblock %}

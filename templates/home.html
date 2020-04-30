@@ -273,9 +273,9 @@ body {
           <input type="hidden">
         </form>
         {% else %}
-        <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-sm btn-outline-secondary" style="color: white;" href="{% url 'login' %}">Login</a>
 
-        <a class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}">Sign up</a>
+        <a class="btn btn-sm btn-outline-secondary" style="background-color: rgb(24, 151, 224); color: white; font-weight: bold;" href="{% url 'signup' %}">Sign up</a>
        
 
         {% endif %}
@@ -293,7 +293,7 @@ body {
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'search' %}">statewise Count</a>
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'country' %}">District wise count</a>
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'location' %}">Click to know if you are safe</a>
-            <a class="btn btn-sm btn-outline-secondary blue" href="{% url 'room' %}">Enter chatroom</a>
+            <a class="btn btn-sm btn-outline-secondary blue" style="color: gold; background-color: crimson; box-shadow: grey 4px;" href="{% url 'room' %}">Enter chatroom</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               
