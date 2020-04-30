@@ -1,0 +1,69 @@
+{% extends 'home.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+<br>
+<br>
+
+<p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Your lobby name:</p>
+<p style="text-align: center;font-family: Arial, Helvetica, sans-serif; color: slateblue; font-size: 30px;">{{ room_name}}</p>
+    <textarea style="padding-left: 20px;border: solid teal 3px; border-radius: 30px;background-color: snow; box-shadow:black 10px;  height: 300px; align-items: center; font-family:  Helvetica, sans-serif; "
+     id="chat-log" cols="100" rows="20" readonly></textarea>
+     <br><br>
+    <input id="chat-message-input" style="padding-left: 9px; color: crimson; font-family:Helvetica, sans-serif; font-size: 10px; color: orchid; background-color: whitesmoke; border-radius: 10px; height: 50px; width:300px; opacity: 20%; font-size: 30px; margin-bottom: 10px;"
+     placeholder="type in message" type="text" size="10" data-emojiable="true"><br>
+    <input id="chat-message-submit" class="btn" style="box-shadow: seashell 4px; background-color: yellowgreen; color: oldlace;" type="button" value="Send" >
+  
+  
+    
+
+
+    
+            {{ room_name|json_script:"room-name" }}
+            <script>
+                const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        
+                const chatSocket = new WebSocket(
+                    'ws://'
+                    + window.location.host
+                    + '/ws/riku/'
+                    + roomName
+                    + '/'
+                );
+        
+                chatSocket.onmessage = function(e) {
+                    const data = JSON.parse(e.data);
+                    document.querySelector('#chat-log').value += (data.message + '\n');
+                    document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight 
+                };
+        
+                chatSocket.onclose = function(e) {
+                    console.error('Chat socket closed unexpectedly');
+                };
+        
+                document.querySelector('#chat-message-input').focus();
+                document.querySelector('#chat-message-input').onkeyup = function(e) {
+                    if (e.keyCode === 13) {  // enter, return
+                        document.querySelector('#chat-message-submit').click();
+                    }
+                };
+        
+                document.querySelector('#chat-message-submit').onclick = function(e) {
+                    const messageInputDom = document.querySelector('#chat-message-input');
+                    const message = messageInputDom.value;
+                    chatSocket.send(JSON.stringify({
+                        'message': message
+                    }));
+                    messageInputDom.value = '';
+                };
+            </script>
+        
+   
+
+
+
+
+{% endblock %}

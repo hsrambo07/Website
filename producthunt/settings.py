@@ -25,7 +25,7 @@ SECRET_KEY = '*g!de%mzfo9*pwwi%gah4y5154!oykb1i^l!z9q&f!(v3&@1t3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["98386497.ngrok.io","localhost","127.0.0.1"
+ALLOWED_HOSTS = ["452a084d.ngrok.io","localhost","127.0.0.1"
 ]
 
 
@@ -33,6 +33,9 @@ ALLOWED_HOSTS = ["98386497.ngrok.io","localhost","127.0.0.1"
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'riku',
+    
     'products.apps.ProductsConfig',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
@@ -95,7 +98,8 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication'
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
@@ -154,3 +158,16 @@ STATIC_ROOT = '/static/'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+
+ASGI_APPLICATION = 'producthunt.routing.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

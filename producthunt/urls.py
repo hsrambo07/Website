@@ -21,8 +21,12 @@ urlpatterns = [
     path('country/',views.country,name='country'),
     path('search/',views.search,name='search'),
     path('location/',views.location,name='location'),
+    path('riku/',include('riku.urls')),
+
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+

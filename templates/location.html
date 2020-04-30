@@ -29,10 +29,14 @@ xhr.onreadystatechange = function() {
     
     data_django= {{jsons|safe}};
     if (data_django.includes(z)){
-    document.getElementById("result").innerHTML="Please Stay Home"; 
+    document.getElementById("result").innerHTML="You are living in a danger zone,Please Stay Home"; 
     document.getElementById("result").style.color = "red";
 
      
+} else{
+
+  document.getElementById("result").innerHTML="You are living in a safe zone,Please Stay Home"; 
+    document.getElementById("result").style.color = "Green";
 }    }
  
 };

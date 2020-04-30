@@ -13,16 +13,12 @@
 
 
 <form class="form-signin" method="POST" action="{% url 'signup' %}">
-  <img class="mb-4" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="" style="text-align: center; left: 100px;" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     {% csrf_token %}
-    <label class="sr-only">Username</label>
-    <input type="text" class="form-control" name="username" required autofocus>
+    <input type="text" class="form-control" placeholder="Username" name="username" required>
           
-    <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" name="password1" class="form-control" placeholder="Password" required>
 
-    <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
 
 
@@ -34,6 +30,9 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
   </form>
+
+
+ 
 {% endblock %}
 
 

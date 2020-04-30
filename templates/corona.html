@@ -1,11 +1,10 @@
 {% extends 'home.html' %}
 
 {% block content %}
-<div style="align-items: center;">
-<h1>STATE:{{empty.response.name}}</h1>
-<h2>Confirmed cases:{{empty.response.confirmed}}</h2>
- <h3>Total recovered cases: {{empty.response.recovered}}</h3> 
-<h3>Total Deaths:{{empty.response.deaths}}</h3>
-</div>
+
+<p style="text-align: center; font-family: Helvetica, sans-serif;font-size: 60px;">STATE:{{empty.response.name}}</p>
+<p style="text-align: center;font-family: Helvetica, sans-serif;font-size: 40px;">Confirmed cases:{{empty.response.confirmed}}</p>
+ <p style="text-align: center;font-family: Helvetica, sans-serif; color: green; font-size: 25px;">Total recovered cases: {{empty.response.recovered}}</p> 
+<p style="text-align: center;font-family: Helvetica, sans-serif;color: red; font-size: 25px;">Total Deaths:{{empty.response.deaths}}</p>
 {{country}}
 {% endblock %}

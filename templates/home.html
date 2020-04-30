@@ -29,10 +29,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/a.css' %}">
 
 
+
 <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+
 
     <style>
    
@@ -242,7 +244,7 @@ body {
     <!-- Custom styles for this template -->
     <link href="blog.css" rel="stylesheet">
   </head>
-  <body class="pad">
+  <body class="pad" style="background: crimson;">
       
 
     <div class="container">
@@ -262,6 +264,7 @@ body {
         {% if user.is_authenticated %}  
         <a class="btn btn-sm btn-outline-secondary" href="{% url 'create' %}">Upload Product</a>
 
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'room' %}">chatroom</a>
 
         <a class="btn btn-sm btn-outline-secondary" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
         <form id="logout" method="POST" action="{% url 'logout' %}">
@@ -290,6 +293,7 @@ body {
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'search' %}">statewise Count</a>
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'country' %}">District wise count</a>
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'location' %}">Click to know if you are safe</a>
+            <a class="btn btn-sm btn-outline-secondary blue" href="{% url 'room' %}">Enter chatroom</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               

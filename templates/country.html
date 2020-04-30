@@ -2,12 +2,16 @@
 
 {% block content %}
 
+
 {% for i in country %}
-   <h1 style="font-family: Helvetica, sans-serif; display: inline-block;">State:</h1><h2 style="font-family:Helvetica, sans-serif; display: inline;">{{i.state}}</h2> 
+   <h1 style="font-family: Helvetica, sans-serif; display: inline-block; color: yellow;">State:</h1><h2 style="font-family:Helvetica, sans-serif; display: inline; color: white;">{{i.state}}</h2> 
    <br>
      {% for j in i.districtData %}
-     <h3 style="font-family: helvetica; display: inline-block;"> {{j.district}} :</h3> <p>Confirmed Cases: {{j.confirmed}}</p>
-      <p>Recovered:{{j.recovered}}</p>
+     <h4 style="font-family: Helvetica, sans-serif; display: inline-block;">District: </h4><h3 style="font-family: helvetica; display: inline-block;" > {{j.district}} :</h3> <p  style="font-size: 20px; font-size: 19px; color: turquoise; font-weight: bolder;">Confirmed Cases: {{j.confirmed}}</p>
+     <p style="color: whitesmoke; font-weight: 500;">Active:{{j.active}}</p>
+
+     <p style="color: yellowgreen;">Recovered:{{j.recovered}}</p>
+      <p style="color: hotpink;">Deaths:{{j.deceased}}</p>
       
 {% endfor %}
 <br>
