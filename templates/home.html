@@ -262,16 +262,19 @@ body {
         </a>
 
         {% if user.is_authenticated %}  
+
         <a class="btn btn-sm btn-outline-secondary" href="{% url 'create' %}">Upload Product</a>
+
 
         <a class="btn btn-sm btn-outline-secondary" href="{% url 'room' %}">chatroom</a>
 
         <a class="btn btn-sm btn-outline-secondary" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
         <form id="logout" method="POST" action="{% url 'logout' %}">
-
           {% csrf_token %}
           <input type="hidden">
         </form>
+        <p style="font: 15px; color: white; font-family: Helvetica, sans-serif; font-weight: bold;">You are Logged in as: </p> <p style="font-family: Helvetica, sans-serif; font-size: 20px; align-items: center; color: yellow; text-transform: capitalize;">{{request.user.username}}</p>
+
         {% else %}
         <a class="btn btn-sm btn-outline-secondary" style="color: white;" href="{% url 'login' %}">Login</a>
 

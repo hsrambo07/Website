@@ -13,10 +13,12 @@
 
 <br>
 <br>
-
+<div style="text-align: left;">
+<p style="font: 15px; color: white; font-family: Helvetica, sans-serif; font-weight: bold;">You are Logged in as: </p> <p style="font-family: Helvetica, sans-serif; font-size: 20px; align-items: center; color: yellow; text-transform: capitalize;">{{request.user.username}}</p>
+</div>
 <p style="text-align: center; align-self: auto;color: aliceblue; font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Your lobby name:</p>
 <p style="text-align: center;font-family: Helvetica, sans-serif; color: yellow;font-weight: bold; font-size: 40px;">{{ room_name}}</p>
-<textarea  style="color: whitesmoke; resize: none;overflow: auto; width: 700px; font-size: 25px; padding-left: 20px;padding-top: 5px; border: solid yellow 7px; border-radius: 30px;background-color: snow; box-shadow:black 10px;  height: 300px; align-items: center; font-family:  Helvetica, sans-serif; "
+<textarea  style="color: whitesmoke; text-align-last: auto; resize: none;overflow: auto; width: 700px; font-size: 25px; padding-left: 20px;padding-top: 5px; border: solid yellow 7px; border-radius: 30px;background-color: snow; box-shadow:black 10px;  height: 300px; align-items: center; font-family:  Helvetica, sans-serif; "
      id="chat-log" id="chat-log1" cols="100" rows="20" readonly></textarea> 
 
 
@@ -49,9 +51,8 @@
                     const data = JSON.parse(e.data);
 
                     var time = new Date();
-                    document.querySelector('#chat-log').value += ((data.message) + " ");
+                    document.querySelector('#chat-log').value += ( '{{request.user.username}}' +":"+" " +(data.message) + "                                                    ");
                     document.querySelector('#chat-log').value += ((time.getHours())+":"+(time.getMinutes())+":"+(time.getSeconds()) + '\n');
-                    document.querySelector('#chat-log').style.color ='yellow' ;
 
                     document.querySelector('#chat-log').style.color ='white' ;
                     document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight ;               
@@ -140,3 +141,6 @@
    
     
 {% endblock %}
+
+
+<--https://www.w3schools.com/jsref/dom_obj_style.asp-->
